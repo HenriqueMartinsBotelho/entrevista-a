@@ -47,15 +47,17 @@ const main = async (): Promise<void> => {
   const load: AsyncWorkFunction[] = generateWorkload();
 
   try {
-    const maxTasks = 12;
-    const results: number[] = await executeWithThrottling(maxTasks, load);
-    console.log(`Concluído em ${Date.now() - startTime}ms`);
-    console.log("Respostas:", results);
+    const maxConcurrentTasks = 12;
+    const results: number[] = await executeWithThrottling(
+      maxConcurrentTasks,
+      load
+    );
+    const endTime: number = Date.now();
+    console.log(`Execução completada em ${endTime - startTime}ms`);
+    console.log(`Resultados: ${results}`);
   } catch (error) {
     console.error("Falha na execução:", error);
   }
 };
 
-main().catch((error) => {
-  console.error("Erro inesperado:", error);
-});
+main().catch(console.error);
