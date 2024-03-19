@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2023",
+    "target": "ESNext",
     "strict": true,
     "module": "commonjs",
     "skipLibCheck": true,
